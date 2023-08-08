@@ -44,17 +44,25 @@ productosOrdenadosAZ.forEach((producto) => {
 
 })
 
-const validEdad = parseInt(prompt('Hola, ingresa tu edad'));
+const inicio = function(){
+    let usuario = prompt('Bienvenido, ingresa tu nombre');
+    return `Hola ${usuario}, ingreasa tu edad`;
+}
+
+const validEdad = parseInt(prompt(inicio()));
 
 
 if(validEdad >= 18){
 
     const selectProd = prompt(`Bienvenido, estos son los productos en stokc:\n\n ${mensaje}\nEscriba en nombre del producto que desea comprar`);
-
+    console.log(selectProd)
     const productoSelect = productosOrdenadosAZ.find((producto) => producto.nombre === selectProd);
-    // console.log(productoSelect)
+    console.log(productoSelect)
 
-    if(productoSelect.nombre === selectProd){
+    if(productoSelect == undefined){
+        alert('No ingresaste un producto en stock');
+        
+    }else if(productoSelect.nombre === selectProd){
         alert(`Seleccionaste el producto ${productoSelect.nombre} con un valor de $ ${productoSelect.precio}.\n\nSu producto se encuentra en camino\n\nGracias por su compra`);
         
     }else{
